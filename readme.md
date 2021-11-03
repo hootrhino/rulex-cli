@@ -4,7 +4,7 @@
 RULEXC 是 RULEX Client 的意思，是命令行下的客户端工具，帮助我们调试和管理RULEX(https://github.com/wwhai/rulex)。
 
 ## 构建
-```sh
+```shell
 go build -v -o rulexc main.go
 ```
 
