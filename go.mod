@@ -1,4 +1,4 @@
-module rulex-cli
+module rulexc
 
 go 1.17
 
