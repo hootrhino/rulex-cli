@@ -8,19 +8,15 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-//
-//
-//
+const OUTEND_API_NAME = "outends"
+
 func AllOutEnds(c *cli.Context) error {
 	host := c.String("host")
-	result := get(host, "outends")
+	result := get(host, OUTEND_API_NAME)
 	fmt.Println(result)
 	return nil
 }
 
-//
-//
-//
 func CreateOutends(c *cli.Context) error {
 	host := c.String("host")
 	config := c.String("config")
@@ -29,15 +25,12 @@ func CreateOutends(c *cli.Context) error {
 	if err != nil {
 		log.Error(config, err)
 	} else {
-		_, result := post(maps, host, "outends")
+		_, result := post(maps, host, OUTEND_API_NAME)
 		fmt.Println(result)
 	}
 	return nil
 }
 
-//
-//
-//
 func UpdateOutEnd(c *cli.Context) error {
 	host := c.String("host")
 	config := c.String("config")
@@ -46,19 +39,16 @@ func UpdateOutEnd(c *cli.Context) error {
 	if err != nil {
 		log.Error(config, err)
 	} else {
-		result := put(host, "outends", maps)
+		result := put(host, OUTEND_API_NAME, maps)
 		fmt.Println(result)
 	}
 	return nil
 }
 
-//
-//
-//
 func RemoveOutEnd(c *cli.Context) error {
 	host := c.String("host")
 	uuid := c.String("uuid")
-	result := delete(host, "outends", "uuid="+uuid)
+	result := delete(host, OUTEND_API_NAME, "uuid="+uuid)
 	fmt.Println(result)
 	return nil
 }

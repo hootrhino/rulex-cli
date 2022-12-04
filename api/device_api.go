@@ -8,16 +8,16 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const INEND_API_NAME = "inends"
+const DEVICE_API_NAME = "devices"
 
-func AllInends(c *cli.Context) error {
+func AllDevices(c *cli.Context) error {
 	host := c.String("host")
-	result := get(host, INEND_API_NAME)
+	result := get(host, DEVICE_API_NAME)
 	fmt.Println(result)
 	return nil
 }
 
-func CreateInend(c *cli.Context) error {
+func CreateDevice(c *cli.Context) error {
 	host := c.String("host")
 	config := c.String("config")
 	maps := map[string]interface{}{}
@@ -25,13 +25,13 @@ func CreateInend(c *cli.Context) error {
 	if err != nil {
 		log.Error(config, err)
 	} else {
-		_, result := post(maps, host, INEND_API_NAME)
+		_, result := post(maps, host, DEVICE_API_NAME)
 		fmt.Println(result)
 	}
 	return nil
 }
 
-func UpdateInEnd(c *cli.Context) error {
+func UpdateDevice(c *cli.Context) error {
 	host := c.String("host")
 	config := c.String("config")
 	maps := map[string]interface{}{}
@@ -39,16 +39,16 @@ func UpdateInEnd(c *cli.Context) error {
 	if err != nil {
 		log.Error(config, err)
 	} else {
-		result := put(host, INEND_API_NAME, maps)
+		result := put(host, DEVICE_API_NAME, maps)
 		fmt.Println(result)
 	}
 	return nil
 }
 
-func RemoveInEnd(c *cli.Context) error {
+func RemoveDevice(c *cli.Context) error {
 	host := c.String("host")
 	uuid := c.String("uuid")
-	result := delete(host, INEND_API_NAME, "uuid="+uuid)
+	result := delete(host, DEVICE_API_NAME, "uuid="+uuid)
 	fmt.Println(result)
 	return nil
 }

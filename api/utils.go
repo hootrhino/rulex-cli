@@ -3,13 +3,13 @@ package api
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/ngaut/log"
 )
 
-//HTTP Post
+// HTTP Post
 func post(data map[string]interface{}, host string, api string) (int, string) {
 	p, errs1 := json.Marshal(data)
 	if errs1 != nil {
@@ -23,7 +23,7 @@ func post(data map[string]interface{}, host string, api string) (int, string) {
 	}
 	defer r.Body.Close()
 
-	body, errs5 := ioutil.ReadAll(r.Body)
+	body, errs5 := io.ReadAll(r.Body)
 	if errs5 != nil {
 		log.Fatal(errs5)
 	}
@@ -39,7 +39,7 @@ func get(host string, api string) string {
 		return ""
 	}
 	defer r.Body.Close()
-	body, errs2 := ioutil.ReadAll(r.Body)
+	body, errs2 := io.ReadAll(r.Body)
 	if errs2 != nil {
 		log.Error(errs2)
 		return ""
@@ -64,7 +64,7 @@ func delete(host string, api string, param string) string {
 		return ""
 	}
 	defer response.Body.Close()
-	body, errs5 := ioutil.ReadAll(response.Body)
+	body, errs5 := io.ReadAll(response.Body)
 	if errs5 != nil {
 		return ""
 	}
@@ -92,7 +92,7 @@ func put(host string, api string, data map[string]interface{}) string {
 		return ""
 	}
 	defer response.Body.Close()
-	body, errs5 := ioutil.ReadAll(response.Body)
+	body, errs5 := io.ReadAll(response.Body)
 	if errs5 != nil {
 		log.Error(errs5)
 		return ""
