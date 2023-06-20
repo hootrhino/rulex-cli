@@ -1,7 +1,7 @@
 # RULEX 命令行工具
 
 ## RULEX-CLI 简介
-RULEX-CLI 是 RULEX 命令行下的客户端工具，帮助我们调试和管理RULEX(https://github.com/hootrhino/rulex)。
+RULEX-CLI 是 RULEX 命令行下的客户端工具，帮助我们调试和管理RULEX。
 
 ## 构建
 ```shell
