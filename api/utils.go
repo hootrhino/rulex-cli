@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/ngaut/log"
+	"log"
 )
 
 // HTTP Post
@@ -35,13 +35,13 @@ func get(host string, api string) string {
 	// Get list
 	r, errs := http.Get(("http://" + host + ":2580/api/v1/" + api))
 	if errs != nil {
-		log.Error(errs)
+		log.Println(errs)
 		return ""
 	}
 	defer r.Body.Close()
 	body, errs2 := io.ReadAll(r.Body)
 	if errs2 != nil {
-		log.Error(errs2)
+		log.Println(errs2)
 		return ""
 	}
 	return string(body)
@@ -55,12 +55,12 @@ func delete(host string, api string, param string) string {
 		nil,
 	)
 	if err0 != nil {
-		log.Error(err0)
+		log.Println(err0)
 		return ""
 	}
 	response, err1 := http.DefaultClient.Do(req)
 	if err1 != nil {
-		log.Error(err1)
+		log.Println(err1)
 		return ""
 	}
 	defer response.Body.Close()
@@ -83,18 +83,18 @@ func put(host string, api string, data map[string]interface{}) string {
 		bytes.NewBuffer(p),
 	)
 	if err0 != nil {
-		log.Error(err0)
+		log.Println(err0)
 		return ""
 	}
 	response, err1 := http.DefaultClient.Do(req)
 	if err1 != nil {
-		log.Error(err1)
+		log.Println(err1)
 		return ""
 	}
 	defer response.Body.Close()
 	body, errs5 := io.ReadAll(response.Body)
 	if errs5 != nil {
-		log.Error(errs5)
+		log.Println(errs5)
 		return ""
 	}
 

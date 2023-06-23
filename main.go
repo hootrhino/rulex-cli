@@ -8,7 +8,8 @@ import (
 	"os"
 	"rulexc/api"
 
-	"github.com/ngaut/log"
+	"log"
+
 	"github.com/urfave/cli/v2"
 )
 

@@ -4,7 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ngaut/log"
+	"log"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -23,7 +24,7 @@ func CreateOutends(c *cli.Context) error {
 	maps := map[string]interface{}{}
 	err := json.Unmarshal([]byte(config), &maps)
 	if err != nil {
-		log.Error(config, err)
+		log.Println(config, err)
 	} else {
 		_, result := post(maps, host, OUTEND_API_NAME)
 		fmt.Println(result)
@@ -37,7 +38,7 @@ func UpdateOutEnd(c *cli.Context) error {
 	maps := map[string]interface{}{}
 	err := json.Unmarshal([]byte(config), &maps)
 	if err != nil {
-		log.Error(config, err)
+		log.Println(config, err)
 	} else {
 		result := put(host, OUTEND_API_NAME, maps)
 		fmt.Println(result)
