@@ -1,0 +1,32 @@
+name: 1- Release
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    name: Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Check go version"
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
+      - name: Build
+        run: |
+          sudo apt update -y
+          sudo apt install jq cloc protobuf-compiler \
+               gcc-mingw-w64-x86-64 \
+               gcc-arm-linux-gnueabi \
+               gcc-mips-linux-gnu \
+               gcc-aarch64-linux-gnu -y
+          cloc ./
+          make
+          bash ./release_pkg.sh
+      # ------------------------------
+      - uses: ncipollo/release-action@v1
+        name: "Upload Files"
+        with:
+          artifacts: "__build/_release/*.zip"
