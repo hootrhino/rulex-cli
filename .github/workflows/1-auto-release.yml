@@ -31,4 +31,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         name: "Upload Files"
         with:
+          token: ${{ secrets.GH_TOKEN }}
           artifacts: "__build/_release/*.zip"
