@@ -23,6 +23,8 @@ jobs:
                gcc-mips-linux-gnu \
                gcc-aarch64-linux-gnu -y
           cloc ./
+          go mod tidy
+          go get
           make
           bash ./release_pkg.sh
       # ------------------------------

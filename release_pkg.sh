@@ -64,7 +64,6 @@ cross_compile() {
         mkdir -p ./_release/
     fi
     cd rulexc
-    go get
     for arch in ${ARCHS[@]}; do
         echo -e "\033[34m [★] Compile target =>\033[43;34m ["$arch"]. \033[0m"
         if [[ "${arch}" == "x64windows" ]]; then
