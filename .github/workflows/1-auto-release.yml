@@ -32,4 +32,4 @@ jobs:
         name: "Upload Files"
         with:
           token: ${{ secrets.GH_TOKEN }}
-          artifacts: "__build/_release/*.zip"
+          artifacts: "_build/_release/*.zip"
